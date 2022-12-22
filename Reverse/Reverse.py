@@ -11,6 +11,7 @@
       #  cv2.imwrite(name, imagem)
 
 import cv2
+import numpy as np
 
 
 def OpenCV_Access_RGBValue(inMat):
@@ -61,13 +62,15 @@ cv2.imwrite('output.jpg', inMat)
 cv2.imshow('test', inMat)
 cv2.waitKey(0)
 
+Img= cv2.imread("img.jpg", 0)
+cv2.imshow("Resim", Img)
 #manuel histogram hesaplama
 histogramDizisi = np.zeros(256) #Histogram hesabı için 0 'lardan oluşan boş bir dizi oluşturdum.
-yukseklik,genislik=kartalResmi.shape #Görüntünün boyutları alındı çünkü for döngüsünde sınırları belirlememiz gerekiyordu.
+yukseklik,genislik=Img.shape #Görüntünün boyutları alındı çünkü for döngüsünde sınırları belirlememiz gerekiyordu.
 
 for i in range(yukseklik):
     for j in range(genislik):
-        pikselDegeri=kartalResmi[i][j] #Görüntünün  piksel değerleri sıra ile alındı.
+        pikselDegeri=Img[i][j] #Görüntünün  piksel değerleri sıra ile alındı.
         histogramDizisi[pikselDegeri]= histogramDizisi[pikselDegeri] + 1 #okunan değerin index ine gidilip 1 artırıldı.
 
 
